@@ -216,6 +216,33 @@ def user_stats(df, city):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def print_row_data(df, df_list):
+
+    df = df.reset_index()
+
+    while True:
+        restart = input('\nWould you like to see some raw data? Enter yes or no.\n')
+        if restart not in ("yes", "no"):
+            print('\nPlease try again.\n')
+        elif restart == "no":
+            break   
+        else:
+            
+            while restart.lower() == 'yes': 
+
+                i=0
+                while i <(len(df)):
+                    print(df.loc[i:i+4, df_list])
+                    i += 5
+
+                    while True:
+                        restart = input('\nWould you like to see 5 more rows of the data? Enter yes or no.\n')
+                        if restart not in ("yes", "no"):
+                            print('\nPlease try again.\n')
+                        elif restart == "yes":
+                            break   
+                        else:
+                            return True
 
 def main():
     while True:
@@ -226,6 +253,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df, city)
+        print_row_data(df, df_list)
     
         while True:
             restart = str(input('\nWould you like to restart? Enter yes or no.\n')).lower()
