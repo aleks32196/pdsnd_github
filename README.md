@@ -15,5 +15,5 @@ Bicycle-sharing systems allow users to rent bicycles on a very short-term basis 
 * washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+You can read about **datetime** module’s **timedelta()** object used in this project [here](https://www.mytecbits.com/internet/python/seconds-to-days-hours-minutes)
 
