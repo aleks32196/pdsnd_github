@@ -108,6 +108,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.read_csv(CITY_DATA[city.lower()])
+    df_list = list(df.columns.values)
     df["Start Time"]=pd.to_datetime(df["Start Time"])
     df['month'] = df['Start Time'].dt.month_name()
     df['day_of_week'] = df['Start Time'].dt.day_name()
@@ -118,7 +119,7 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day]
     else: 
         df = df
-    return df
+    return df, df_list
 
 #df = load_data(city, month, day)
 
@@ -215,16 +216,44 @@ def user_stats(df, city):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def print_row_data(df, df_list):
+
+    df = df.reset_index()
+
+    while True:
+        restart = input('\nWould you like to see some raw data? Enter yes or no.\n')
+        if restart not in ("yes", "no"):
+            print('\nPlease try again.\n')
+        elif restart == "no":
+            break   
+        else:
+            
+            while restart.lower() == 'yes': 
+
+                i=0
+                while i <(len(df)):
+                    print(df.loc[i:i+4, df_list])
+                    i += 5
+
+                    while True:
+                        restart = input('\nWould you like to see 5 more rows of the data? Enter yes or no.\n')
+                        if restart not in ("yes", "no"):
+                            print('\nPlease try again.\n')
+                        elif restart == "yes":
+                            break   
+                        else:
+                            return True
 
 def main():
     while True:
         city, month, day = get_filters()
-        df = load_data(city, month, day)
+        df, df_list = load_data(city, month, day)
 
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df, city)
+        print_row_data(df, df_list)
     
         while True:
             restart = str(input('\nWould you like to restart? Enter yes or no.\n')).lower()
