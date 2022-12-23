@@ -8,6 +8,10 @@
 
 Bicycle-sharing systems allow users to rent bicycles on a very short-term basis for a price. This app uses data provided by Motivate, a bike-share system provider for three major cities in the United States (Chicago, New York City, and Washington, DC), and allows users to **learn about bike-share use** by computing a variety of descriptive statistics .
 
+## Using Bike Share Data app
+
+You'll need to have Python installed on your computer. It is strongly recommended to install Anaconda which includes great distribution of libraries including NumPy and Pandas necessary to run this code. You can use the terminal/command line inside code editors to run this app.
+
 ## Instructions
 
 * clone the project
