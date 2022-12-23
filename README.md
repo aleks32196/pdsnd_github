@@ -8,6 +8,11 @@
 
 Bicycle-sharing systems allow users to rent bicycles on a very short-term basis for a price. This app uses data provided by Motivate, a bike-share system provider for three major cities in the United States (Chicago, New York City, and Washington, DC), and allows users to **learn about bike-share use** by computing a variety of descriptive statistics .
 
+## Instructions
+
+* clone the project
+* run bikeshare.py file in terminal
+
 ### Files used
 * bikeshare.py
 * chicago.csv
